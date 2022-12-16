@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        Library l = new Library();
+        System.out.println("Введите количество книг: ");
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++){
+            String name = sc.next();
+            String author = sc.next();
+            int year = sc.nextInt();
+            Book b = new Book(name, author, year);
+            l.add(b);
+        }
+        l.print();
+        System.out.println("Введите название книги, которое хотите удалить: ");
+        String nam = sc.next();
+        l.deleteName(nam);
+        System.out.println("Введите имя автора, чьи книги нужно удалить: ");
+        String aut = sc.next();
+        l.deleteAuthor(aut);
+        System.out.println();
+        l.BySortYear();
+        l.BySortName();
+        l.print();
+    }
+}
