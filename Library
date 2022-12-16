@@ -1,0 +1,45 @@
+import java.util.*;
+public class Library {
+    ArrayList<Book> list;
+    Library(){
+        list = new ArrayList<Book>();
+    }
+    void add(Book s){
+        list.add(s);
+    }
+    void print(){
+        for(int i = 0; i < list.size();i++){
+            System.out.println(list.get(i).toString());
+        }
+    }
+    void deleteName(String name){
+        int p = -1;
+        for (int i = 0; i < list.size(); i++) {
+            if (name.equalsIgnoreCase(list.get(i).getName()))
+                p = i;
+        }
+        if (p > -1){
+            list.remove(p);
+            System.out.println("Удалили книгу под названием " + name);
+        }
+        else{
+            System.out.println("Нет такой книги");
+        }
+    }
+    void deleteAuthor(String author){
+        list.sort(Book.AuthorCompare);
+        for(int i = 0; i < list.size(); i++) {
+            while (author.equalsIgnoreCase(list.get(i).getAuthor())) {
+                list.remove(i);
+                i--;
+            }
+        }
+        System.out.println("Все книга автора " + author + " удалены");
+    }
+    void BySortYear(){
+        list.sort(Book.YearCompare);
+    }
+    void BySortName(){
+        list.sort(Book.NameCompare);
+    }
+}
