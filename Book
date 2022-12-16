@@ -1,0 +1,41 @@
+import java.util.*;
+public class Book implements Comparator<Book> {
+    String name;
+    String author;
+    int year;
+    Book(String name, String author, int year){
+        this.name = name;
+        this.author = author;
+        this.year = year;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getAuthor(){
+        return author;
+    }
+    public int getYear(){
+        return year;
+    }
+    public void print(){
+        System.out.println("Name of Book: "+name+" Author: "+author+" Year: "+year);
+    }
+    public int compare(Book b1, Book b2){
+        return b1.getYear() - b2.getYear();
+    }
+    public static Comparator<Book> AuthorCompare = new Comparator<Book>() {
+        public int compare(Book b1, Book b2){
+            return b1.getAuthor().compareTo(b2.getAuthor());
+        }
+    };
+    public static Comparator<Book> YearCompare = new Comparator<Book>() {
+        public int compare(Book b1, Book b2){
+            return b1.getYear() - b2.getYear();
+        }
+    };
+    public static Comparator<Book> NameCompare = new Comparator<Book>() {
+        public int compare(Book b1, Book b2){
+            return b1.getName().compareTo(b2.getName());
+        }
+    };
+}
